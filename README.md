@@ -9,6 +9,23 @@ Have the JAVA JDK21 in your runtime path with Apache Maven. Once those are avail
 ```bash
 mvn spring-boot:run
 ```
+This project is enabled for execution as Docker Image. To build the image, Run the below command, Ensure you have docker or rancher running active on your machine.
+
+```bash
+docker build -t device-info-sys:latest .
+```
+
+So once the above command is executor, the image gets built and made available in your local container location depending on the OS, however readily can be seen on your RancherDesktop or Docker app. Now to run this image from the CLI, use the below command:
+
+```bash
+docker run -p 8080:8080 --name device-store device-info-sys:latest
+```
+
+To verify if there is active process in execution, try the below command to affirm the executing process. Container Name will be "device-store", FYI!
+
+```bash
+docker ps
+```
 
 ## Features
 
@@ -26,7 +43,7 @@ We have leveraged usage of LOMBOK effectively. At present, we have the minimal o
 
 - Using JDK21's Record class as DTO with primary validations done in an annotated way. This would avoid POJOs.
 - RECORD PATTERN helps us to use more specific actions specific to the cases like IU(In-Use), AV(Available) to be more modular and readable.
-- JDK21 comes with the Project Bloom's offering of Virtual Threads which are JVM managed lightweighted threads, unlike the traditional platform threads. Need to explore more on incorporating to the project.
+- JDK21 comes with the Project Bloom's offerring of Virtual Threads which are JVM managed lightweighted threads, unlike the traditional platform threads. Need to explore more on incorporating to the project.
 - Project is covered with the API & Data JPA test. As part of BDD, this project can be leveraged to use KARATE API Testing, Which is industry best for API testing.
 
 ## Contributing
